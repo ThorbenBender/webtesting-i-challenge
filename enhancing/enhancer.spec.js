@@ -18,4 +18,30 @@ describe('helpers module', () => {
 			});
 		});
 	});
+	describe('item failed to enhance', () => {
+		it('should decrease the durabillity by 5', () => {
+			const item = { name: 'Sword', durability: 16, enhancement: 14 };
+			expect(enhancer.fail(item)).toEqual({
+				durability: item.durability - 5,
+				name: item.name,
+				enhancement: item.enhancement
+			});
+		});
+		it('should decrease the durability by 10', () => {
+			const item = { name: 'Sword', durability: 16, enhancement: 16 };
+			expect(enhancer.fail(item)).toEqual({
+				durability: item.durability - 10,
+				name: item.name,
+				enhancement: item.enhancement
+			});
+		});
+		it('should decrease enhancement by 1', () => {
+			const item = { name: 'Sword', durability: 16, enhancement: 20 };
+			expect(enhancer.fail(item)).toEqual({
+				durability: item.durability,
+				name: item.name,
+				enhancement: item.enhancement - 1
+			});
+		});
+	});
 });
