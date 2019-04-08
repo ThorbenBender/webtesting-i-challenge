@@ -5,18 +5,23 @@ module.exports = {
 	get
 };
 
-function succeed(item) {
-	return { ...item };
+function succeed({ name, durability, enhancement }) {
+	return {
+		name,
+		durability,
+		enhancement: ++enhancement
+	};
 }
 
 function fail(item) {
 	return { ...item };
 }
 
-function repair(item) {
+function repair({ name, durability, enhancement }) {
 	return {
 		durability: 100,
-		...item
+		name,
+		enhancement
 	};
 }
 
